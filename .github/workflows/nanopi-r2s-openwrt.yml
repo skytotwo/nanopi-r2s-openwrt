@@ -1,6 +1,6 @@
 name: NanoPi R2S OpenWrt
 
-on:
+on: 
   push:
     branches: 
       - master
