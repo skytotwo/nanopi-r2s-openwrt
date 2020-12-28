@@ -33,7 +33,7 @@ jobs:
     - name: Clone Source
       run: |
         cd "/home/runner"
-        git clone --branch "openwrt-18.06-k5.4" --single-branch "https://github.com/project-openwrt/openwrt" "openwrt"
+        git clone --branch "1806-k54-k510" --single-branch "https://github.com/1715173329/openwrt" "openwrt"
         sudo chown -R runner:runner "openwrt"
         cd "/home/runner/openwrt"
         ./scripts/feeds update -a
@@ -71,8 +71,3 @@ jobs:
       with:
         name: openwrt-18.06-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
         path: /home/runner/openwrt-18.06-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
-    - name: Upload OpenWrt-18.06 Firmwares to Cloud
-      timeout-minutes: 30
-      run: |
-        cd "/home/runner"
-        ${GITHUB_WORKSPACE}/scripts/upload_firmware.sh "18.06" "${{ secrets.TELEGRAM_BOT_TOKEN }}" || exit 0
